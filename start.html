@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="language" content="en" />
+	
+	<!-- blueprint CSS framework -->
+	<link rel="stylesheet" type="text/css" href="/css/screen.css" media="screen, projection" />
+	<link rel="stylesheet" type="text/css" href="/css/print.css" media="print" />
+	<!--[if lt IE 9]>
+	<link rel="stylesheet" type="text/css" href="css/ie.css" media="screen, projection" />
+	<![endif]-->
+
+	<link rel="stylesheet" type="text/css" href="css/nodormz.css" />
+
+<title>NoDormz.com - Index</title>
+</head>
+<body>
+<div id="page" class="container">
+	<div id="head">
+		<h1>
+                    <a href="/">
+			NoDormz.com
+                        <cite>Student voices for student places</cite> <!--ADDED-->
+	 	    </a>
+                </h1>
+			
+	</div>
+				
+						
+						
+				<div id="content" class="intro">
+
+		<h2 class="main">What NoDormz.com is</h2>
+<p>NoDormz.com is a place to help students find off-campus housing getting ratings and reviews from students.</p>
+<div id="main">
+<h2>What can I do on NoDormz.com?</h2>
+<ul class="threeColumns">
+	<li>
+		<h3>Find a place</h3>
+		<a href="">read more &raquo;</a>
+	</li>
+	<li>
+
+		<h3>Rate your Place</h3>
+		<a href="">read more &raquo;</a>
+	</li>
+	<li>
+		<h3>Add your place</h3>
+		<a href="">read more &raquo;</a>
+	</li>
+
+</ul>
+<h2 class="select">Select school first</h2><!--ADDED-->
+<div id="selectSchool">
+<form action="/" method="get"><label for="school_state">State</label><select onchange="			
+			$(&#039;school_id&#039;).setAttribute(&#039;value&#039;, &#039;&#039;);
+			$(&#039;school_id&#039;).firstDescendant().update(&#039;-- loading --&#039;);			
+			new Ajax.Updater(
+				&#039;school_id&#039;, 
+				&#039;/school/options&#039;, {
+					method: &#039;get&#039;,
+					parameters: {
+						state: this.value
+					},						
+					onComplete: function (value) {						
+						if ($F(&#039;school_state&#039;) == value) {
+							$(&#039;school_id&#039;).disabled = (value == &#039;&#039;); 
+						}
+					}.bind(this, this.value)			
+				}
+			)
+		" name="state" id="school_state">
+<option value="">-- select --</option>
+<option value="AL">Alabama</option>
+<option value="AK">Alaska</option>
+<option value="AZ">Arizona</option>
+<option value="AR">Arkansas</option>
+<option value="CA">California</option>
+
+<option value="CO">Colorado</option>
+<option value="CT">Connecticut</option>
+<option value="DE">Delaware</option>
+<option value="FL">Florida</option>
+<option value="GA">Georgia</option>
+<option value="HI">Hawaii</option>
+<option value="ID">Idaho</option>
+<option value="IL">Illinois</option>
+<option value="IN">Indiana</option>
+
+<option value="IA">Iowa</option>
+<option value="KS">Kansas</option>
+<option value="KY">Kentucky</option>
+<option value="LA">Louisiana</option>
+<option value="ME">Maine</option>
+<option value="MD">Maryland</option>
+<option value="MA">Massachusetts</option>
+<option value="MI">Michigan</option>
+<option value="MN">Minnesota</option>
+
+<option value="MS">Mississippi</option>
+<option value="MO">Missouri</option>
+<option value="MT">Montana</option>
+<option value="NE">Nebraska</option>
+<option value="NV">Nevada</option>
+<option value="NH">New Hampshire</option>
+<option value="NJ">New Jersey</option>
+<option value="NM">New Mexico</option>
+<option value="NY">New York</option>
+
+<option value="NC">North Carolina</option>
+<option value="ND">North Dakota</option>
+<option value="OH">Ohio</option>
+<option value="OK">Oklahoma</option>
+<option value="OR">Oregon</option>
+<option value="PA">Pennsylvania</option>
+<option value="RI">Rhode Island</option>
+<option value="SC">South Carolina</option>
+<option value="SD">South Dakota</option>
+
+<option value="TN">Tennessee</option>
+<option value="TX">Texas</option>
+<option value="UT">Utah</option>
+<option value="VT">Vermont</option>
+<option value="VA">Virginia</option>
+<option value="WA">Washington</option>
+<option value="WV">West Virginia</option>
+<option value="WI">Wisconsin</option>
+<option value="WY">Wyoming</option>
+
+</select>
+<label for="school_id">Name</label><select name="id" id="school_id" disabled="disabled">
+<option value="">-- select state first --</option>
+</select>	
+<button type="submit" name="yt0">Go!</button></div>
+<p>
+	Are you a property manager? <a href="/propertyManager">Contact us now!</a></p>
+</div><!--ADDED-->
+<div id="ads">
+	ads by google
+</div>	</div>
+
+	<div id="footer">
+		<address>Copyright &copy; 2010 NoDormz.com. All Rights Reserved.</address>
+		<ul>
+			<li><a href="/aboutUs">About Us</a></li>
+			<li><a href="/contactUs">Contact Us</a></li>
+			<li><a href="/privacyPolicy">Privacy Policy</a></li>
+			<li><a href="/termsOfUse">Terms Of Use</a></li>
+		</ul>
+	</div>
+
+</div>
+</body>
+</html>

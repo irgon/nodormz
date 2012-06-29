@@ -1,0 +1,529 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="language" content="en" />
+	
+	<!-- blueprint CSS framework -->
+	<link rel="stylesheet" type="text/css" href="/css/screen.css" media="screen, projection" />
+	<link rel="stylesheet" type="text/css" href="/css/print.css" media="print" />
+	<!--[if lt IE 9]>
+	<link rel="stylesheet" type="text/css" href="css/ie.css" media="screen, projection" />
+	<![endif]-->
+
+	<link rel="stylesheet" type="text/css" href="css/nodormz.css" />
+
+	<link rel="stylesheet" type="text/css" href="http://www.google.com/uds/css/gsearch.css" />
+<link rel="stylesheet" type="text/css" href="http://www.google.com/uds/solutions/mapsearch/gsmapsearch.css" />
+<link rel="stylesheet" type="text/css" href="/assets/5783c904/pager.css" />
+<script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAzGGKkE4p9REORxEyPbPhABQPVQm3MmjjrQ3Jh2BuxlJ_YhkqEhTV4VwvTVof3tyDWZGft3W7xjvW1g"></script>
+<script type="text/javascript" src="http://www.google.com/uds/api?file=uds.js&amp;v=1.0&amp;key=ABQIAAAAzGGKkE4p9REORxEyPbPhABQPVQm3MmjjrQ3Jh2BuxlJ_YhkqEhTV4VwvTVof3tyDWZGft3W7xjvW1g"></script>
+<script type="text/javascript" src="http://www.google.com/uds/solutions/mapsearch/gsmapsearch.js"></script>
+<title>NoDormz.com - View School</title>
+</head>
+<body>
+<div id="page" class="container">
+	<div id="head">
+
+		<h1><a href="/">NoDormz.com</a></h1>
+                <div class="nav">
+		<a class="adddorm" href="/school/1/addDorm">Add new Dorm</a>
+		<ul class="breadcrumbs"><!-- ADDED -->
+                   <li><a href="/">Home</a></li>
+                   <li>San Jose State University</li>	
+                   
+	</ul>
+		</div>				
+						
+						
+				<div id="content">
+		<script type="text/javascript">
+//<![CDATA[
+var map;
+var idleMap;
+var mapSearchControl;
+var geocoder;
+var dormMarkers = [];
+function LoadMapSearch() {
+	var hotspots = [
+	        { element : document.getElementById("hs01"), query : "grocery" },
+	        { element : document.getElementById("hs02"), query : "gas station" },
+	        { element : document.getElementById("hs03"), query : "laundry" },
+	        { element : document.getElementById("hs04"), query : "bar" },
+	        { element : document.getElementById("hs05"), query : "club" }
+	];
+	mapSearchControl = new GSmapSearchControl(
+        document.getElementById("mapsearch"),
+        "260 South 7th Street, San Jose, CA 95112",
+        {
+        	title : "San Jose State University",
+            url : "/school/1",
+            idleMapZoom : GSmapSearchControl.ACTIVE_MAP_ZOOM-1,
+            zoomControl : GSmapSearchControl.ZOOM_CONTROL_ENABLE_ALL,
+            hotspots : hotspots,
+            showResultList : GSmapSearchControl.DEFAULT_RESULT_LIST,
+            linkTarget: '_self',
+            onBootComplete: function () {
+				idleMap = mapSearchControl.idleGmap;
+				map = mapSearchControl.gmap;
+								geocoder.getLatLng(
+					"201 South Fourth Street, San Jose, CA 95112",
+					function(point) {
+						if (!point) {
+							document.getElementById('showOnMap1').className += ' disabled';
+						} else {														
+							var marker = new GMarker(point);							
+							map.addOverlay(marker);
+							GEvent.addListener(marker, "click", function() {showDorm(0)});
+							var idleMarker = new GMarker(point);			
+							idleMap.addOverlay(idleMarker);
+							GEvent.addListener(idleMarker, "click", function() {showDorm(0)});							
+							dormMarkers[0] = [marker, idleMarker];							
+						}
+					}
+				);	
+								geocoder.getLatLng(
+					"101 E. San Fernando, San Jose, CA 95112",
+					function(point) {
+						if (!point) {
+							document.getElementById('showOnMap2').className += ' disabled';
+						} else {														
+							var marker = new GMarker(point);							
+							map.addOverlay(marker);
+							GEvent.addListener(marker, "click", function() {showDorm(1)});
+							var idleMarker = new GMarker(point);			
+							idleMap.addOverlay(idleMarker);
+							GEvent.addListener(idleMarker, "click", function() {showDorm(1)});							
+							dormMarkers[1] = [marker, idleMarker];							
+						}
+					}
+				);	
+								geocoder.getLatLng(
+					"350 E. Taylor Street, San Jose, CA 95112",
+					function(point) {
+						if (!point) {
+							document.getElementById('showOnMap3').className += ' disabled';
+						} else {														
+							var marker = new GMarker(point);							
+							map.addOverlay(marker);
+							GEvent.addListener(marker, "click", function() {showDorm(2)});
+							var idleMarker = new GMarker(point);			
+							idleMap.addOverlay(idleMarker);
+							GEvent.addListener(idleMarker, "click", function() {showDorm(2)});							
+							dormMarkers[2] = [marker, idleMarker];							
+						}
+					}
+				);	
+								geocoder.getLatLng(
+					"1700 North 1st Street, San Jose, CA 95112",
+					function(point) {
+						if (!point) {
+							document.getElementById('showOnMap4').className += ' disabled';
+						} else {														
+							var marker = new GMarker(point);							
+							map.addOverlay(marker);
+							GEvent.addListener(marker, "click", function() {showDorm(3)});
+							var idleMarker = new GMarker(point);			
+							idleMap.addOverlay(idleMarker);
+							GEvent.addListener(idleMarker, "click", function() {showDorm(3)});							
+							dormMarkers[3] = [marker, idleMarker];							
+						}
+					}
+				);	
+								geocoder.getLatLng(
+					"566 North 6th Street, San Jose, CA 95112",
+					function(point) {
+						if (!point) {
+							document.getElementById('showOnMap5').className += ' disabled';
+						} else {														
+							var marker = new GMarker(point);							
+							map.addOverlay(marker);
+							GEvent.addListener(marker, "click", function() {showDorm(4)});
+							var idleMarker = new GMarker(point);			
+							idleMap.addOverlay(idleMarker);
+							GEvent.addListener(idleMarker, "click", function() {showDorm(4)});							
+							dormMarkers[4] = [marker, idleMarker];							
+						}
+					}
+				);	
+								geocoder.getLatLng(
+					"29 W. Julian Street, San Jose, CA 95110",
+					function(point) {
+						if (!point) {
+							document.getElementById('showOnMap6').className += ' disabled';
+						} else {														
+							var marker = new GMarker(point);							
+							map.addOverlay(marker);
+							GEvent.addListener(marker, "click", function() {showDorm(5)});
+							var idleMarker = new GMarker(point);			
+							idleMap.addOverlay(idleMarker);
+							GEvent.addListener(idleMarker, "click", function() {showDorm(5)});							
+							dormMarkers[5] = [marker, idleMarker];							
+						}
+					}
+				);	
+								geocoder.getLatLng(
+					"2050 McKee Road, San Jose, CA 95116",
+					function(point) {
+						if (!point) {
+							document.getElementById('showOnMap7').className += ' disabled';
+						} else {														
+							var marker = new GMarker(point);							
+							map.addOverlay(marker);
+							GEvent.addListener(marker, "click", function() {showDorm(6)});
+							var idleMarker = new GMarker(point);			
+							idleMap.addOverlay(idleMarker);
+							GEvent.addListener(idleMarker, "click", function() {showDorm(6)});							
+							dormMarkers[6] = [marker, idleMarker];							
+						}
+					}
+				);	
+								geocoder.getLatLng(
+					"1227 Sunny Court , San Jose, CA 95116",
+					function(point) {
+						if (!point) {
+							document.getElementById('showOnMap8').className += ' disabled';
+						} else {														
+							var marker = new GMarker(point);							
+							map.addOverlay(marker);
+							GEvent.addListener(marker, "click", function() {showDorm(7)});
+							var idleMarker = new GMarker(point);			
+							idleMap.addOverlay(idleMarker);
+							GEvent.addListener(idleMarker, "click", function() {showDorm(7)});							
+							dormMarkers[7] = [marker, idleMarker];							
+						}
+					}
+				);	
+								geocoder.getLatLng(
+					"990 Elm Street, San Jose, CA 95126",
+					function(point) {
+						if (!point) {
+							document.getElementById('showOnMap9').className += ' disabled';
+						} else {														
+							var marker = new GMarker(point);							
+							map.addOverlay(marker);
+							GEvent.addListener(marker, "click", function() {showDorm(8)});
+							var idleMarker = new GMarker(point);			
+							idleMap.addOverlay(idleMarker);
+							GEvent.addListener(idleMarker, "click", function() {showDorm(8)});							
+							dormMarkers[8] = [marker, idleMarker];							
+						}
+					}
+				);	
+								geocoder.getLatLng(
+					"2055 Summerside Drive, San Jose, CA 95122",
+					function(point) {
+						if (!point) {
+							document.getElementById('showOnMap10').className += ' disabled';
+						} else {														
+							var marker = new GMarker(point);							
+							map.addOverlay(marker);
+							GEvent.addListener(marker, "click", function() {showDorm(9)});
+							var idleMarker = new GMarker(point);			
+							idleMap.addOverlay(idleMarker);
+							GEvent.addListener(idleMarker, "click", function() {showDorm(9)});							
+							dormMarkers[9] = [marker, idleMarker];							
+						}
+					}
+				);	
+				            }      	
+        }
+	);
+	geocoder = new GClientGeocoder();	
+}
+GSearch.setOnLoadCallback(LoadMapSearch);
+function showDorm(i) {
+	var infoWindowsHTML = [];
+		infoWindowsHTML[0] = '<a href="/dorm/view/id/1">The Colonnade Apartments</a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[1] = '<a href="/dorm/view/id/2">101 San Fernando</a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[2] = '<a href="/dorm/view/id/3">The Esplanade</a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[3] = '<a href="/dorm/view/id/4">Waterford Place</a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[4] = '<a href="/dorm/view/id/5">Miraido Villiage Apartments</a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[5] = '<a href="/dorm/view/id/6">Villa Torino</a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[6] = '<a href="/dorm/view/id/7">Casa Verde Apartments</a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[7] = '<a href="/dorm/view/id/8">Sunny Court Appartments</a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[8] = '<a href="/dorm/view/id/9">Elm Street Apartments</a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[9] = '<a href="/dorm/view/id/10">Summerwind Apartments </a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[10] = '<a href="/dorm/view/id/11">Panova Apartments</a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[11] = '<a href="/dorm/view/id/12">Elm Tree Apartments</a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[12] = '<a href="/dorm/view/id/13">Trestles Apartments </a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[13] = '<a href="/dorm/view/id/14">Meridian Apartments</a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[14] = '<a href="/dorm/view/id/15">1776 Apartments</a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[15] = '<a href="/dorm/view/id/16">West Valley Apartments </a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[16] = '<a href="/dorm/view/id/17">Fruitdale Gardens</a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[17] = '<a href="/dorm/view/id/18"></a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[18] = '<a href="/dorm/view/id/19"></a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[19] = '<a href="/dorm/view/id/20"></a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[20] = '<a href="/dorm/view/id/21"></a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[21] = '<a href="/dorm/view/id/22"></a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[22] = '<a href="/dorm/view/id/23"></a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[23] = '<a href="/dorm/view/id/24"></a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[24] = '<a href="/dorm/view/id/25"></a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[25] = '<a href="/dorm/view/id/26"></a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[26] = '<a href="/dorm/view/id/27"></a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[27] = '<a href="/dorm/view/id/28">The Sands</a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[28] = '<a href="/dorm/view/id/29">Kennedy Hall</a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[29] = '<a href="/dorm/view/id/30">The Metro Gardens</a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[30] = '<a href="/dorm/view/id/31">Ph.D. Apartments</a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[31] = '<a href="/dorm/view/id/32">Twin Palms</a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[32] = '<a href="/dorm/view/id/33">Griffiths</a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[33] = '<a href="/dorm/view/id/34">Reed Apts</a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[34] = '<a href="/dorm/view/id/35"></a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[35] = '<a href="/dorm/view/id/36">2nd Street Apartments</a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[36] = '<a href="/dorm/view/id/37"></a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[37] = '<a href="/dorm/view/id/38"></a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[38] = '<a href="/dorm/view/id/39"></a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[39] = '<a href="/dorm/view/id/40"></a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		infoWindowsHTML[40] = '<a href="/dorm/view/id/41"></a><br/><p>260 South 7th Street, San Jose, CA 95112</p><p></p>';
+		
+	[map, idleMap][mapSearchControl.idle ? 1 : 0].closeInfoWindow();
+	dormMarkers[i][mapSearchControl.idle ? 1 : 0].openInfoWindow(infoWindowsHTML[i], {maxWidth:200});	
+}
+//]]>
+</script>
+<div class="twoColumns">
+
+	<div class="leftColumn">
+		<h2 class="name">San Jose State University <a href="/#selectSchool">change school &raquo;</a></h2><!-- added -->
+		<p class="addy">260 South 7th Street<br /> San Jose, CA 95112</p>
+				<div class="dorms list-view"> 
+
+			<form action="/school/1" method="get" class="sortForm">
+			<div class="sorter">
+				Sort by: 
+				<ul>
+					<li class="selected">
+						<a class="up" href="/school/1?sort=price">Price</a>					</li>
+					<li>
+						<a class="down" href="/school/1?sort=rating">Rating</a>					</li>
+				</ul>
+
+			</div>
+<select id="submit_dropdown" onchange="this.form.submit()" name="type">
+<option value="">-- all --</option>
+<option value="Apartment">Apartment</option>
+<option value="Condo">Condo</option>
+<option value="Townhouse">Townhouse</option>
+<option value="Duplex">Duplex</option>
+<option value="Studio">Studio</option>
+
+</select>			</form>	
+<ul id="yw0" class="yiiPager"><li class="first hidden"><a href="/school/1"></a></li>
+<li class="previous hidden"><a href="/school/1"></a></li>
+<li class="page selected"><a href="/school/1">1</a></li>
+<li class="page"><a href="/school/1?page=2">2</a></li>
+<li class="page"><a href="/school/1?page=3">3</a></li>
+<li class="page"><a href="/school/1?page=4">4</a></li>
+
+<li class="page"><a href="/school/1?page=5">5</a></li>
+<li class="next"><a href="/school/1?page=2"></a></li>
+<li class="last hidden"><a href="/school/1?page=5"></a></li></ul>
+										<ul class="items dorms">
+														<li>
+						<img src="/assets/images/4bc383ff4287et" alt="" onerror="this.src='img/nophoto.png';" />													<h4><a href="/dorm/view/id/1">The Colonnade Apartments</a></h4>
+							<p class="addy">201 South Fourth Street, San Jose, CA 95112</p>
+
+												<p class="desc"></p>
+						<p>Apartment</p>
+						<p>							
+							<span class="rating"><span style="width: 56%">Overall: 2.80000000</span></span>						
+							<span class="price"><span style="width: 75%">Price: 3.0000</span></span>
+						</p>
+						<a class="getfullreview" href="/dorm/view/id/1">Get full review</a>
+						<a onclick="showDorm(0)" class="showonmap" class="showonmap" id="showOnMap1" href="#mapsearch">show on map</a>					</li>					
+														<li>
+
+						<img src="/assets/images/4bc38701b599ft" alt="" onerror="this.src='img/nophoto.png';" />													<h4><a href="/dorm/view/id/2">101 San Fernando</a></h4>
+							<p class="addy">101 E. San Fernando, San Jose, CA 95112</p>
+												<p class="desc"></p>
+						<p>Apartment</p>
+						<p>							
+							<span class="rating"><span style="width: 0%">Overall: 0</span></span>						
+							<span class="price"><span style="width: 0%">Price: 0</span></span>
+
+						</p>
+						<a onclick="showDorm(1)" class="showonmap" class="showonmap" id="showOnMap2" href="#mapsearch">show on map</a>					</li>					
+														<li>
+						<img src="/assets/images/4bc3883f89593t" alt="" onerror="this.src='img/nophoto.png';" />													<h4><a href="/dorm/view/id/3">The Esplanade</a></h4>
+							<p class="addy">350 E. Taylor Street, San Jose, CA 95112</p>
+												<p class="desc"></p>
+						<p>Apartment</p>
+
+						<p>							
+							<span class="rating"><span style="width: 0%">Overall: 0</span></span>						
+							<span class="price"><span style="width: 0%">Price: 0</span></span>
+						</p>
+						<a onclick="showDorm(2)" class="showonmap" class="showonmap" id="showOnMap3" href="#mapsearch">show on map</a>					</li>					
+														<li>
+						<img src="/assets/images/4bc3952e97a7ct" alt="" onerror="this.src='img/nophoto.png';" />													<h4><a href="/dorm/view/id/4">Waterford Place</a></h4>
+
+							<p class="addy">1700 North 1st Street, San Jose, CA 95112</p>
+												<p class="desc"></p>
+						<p>Apartment</p>
+						<p>							
+							<span class="rating"><span style="width: 0%">Overall: 0</span></span>						
+							<span class="price"><span style="width: 0%">Price: 0</span></span>
+						</p>
+						<a onclick="showDorm(3)" class="showonmap" class="showonmap" id="showOnMap4" href="#mapsearch">show on map</a>					</li>					
+														<li>
+
+						<img src="/assets/images/4bc39e808dbd3t" alt="" onerror="this.src='img/nophoto.png';" />													<h4><a href="/dorm/view/id/5">Miraido Villiage Apartments</a></h4>
+							<p class="addy">566 North 6th Street, San Jose, CA 95112</p>
+												<p class="desc"></p>
+						<p>Apartment</p>
+						<p>							
+							<span class="rating"><span style="width: 0%">Overall: 0</span></span>						
+							<span class="price"><span style="width: 0%">Price: 0</span></span>
+
+						</p>
+						<a onclick="showDorm(4)" class="showonmap" class="showonmap" id="showOnMap5" href="#mapsearch">show on map</a>					</li>					
+														<li>
+						<img src="/assets/images/4bc39eacaf8b3t" alt="" onerror="this.src='img/nophoto.png';" />													<h4><a href="/dorm/view/id/6">Villa Torino</a></h4>
+							<p class="addy">29 W. Julian Street, San Jose, CA 95110</p>
+												<p class="desc"></p>
+						<p>Apartment</p>
+
+						<p>							
+							<span class="rating"><span style="width: 0%">Overall: 0</span></span>						
+							<span class="price"><span style="width: 0%">Price: 0</span></span>
+						</p>
+						<a onclick="showDorm(5)" class="showonmap" class="showonmap" id="showOnMap6" href="#mapsearch">show on map</a>					</li>					
+														<li>
+						<img src="/assets/images/4bc3ad7f9a0f8t" alt="" onerror="this.src='img/nophoto.png';" />													<h4><a href="/dorm/view/id/7">Casa Verde Apartments</a></h4>
+
+							<p class="addy">2050 McKee Road, San Jose, CA 95116</p>
+												<p class="desc"></p>
+						<p>Apartment</p>
+						<p>							
+							<span class="rating"><span style="width: 0%">Overall: 0</span></span>						
+							<span class="price"><span style="width: 0%">Price: 0</span></span>
+						</p>
+						<a onclick="showDorm(6)" class="showonmap" class="showonmap" id="showOnMap7" href="#mapsearch">show on map</a>					</li>					
+														<li>
+
+						<img src="/assets/images/4bc39ee83908ct" alt="" onerror="this.src='img/nophoto.png';" />													<h4><a href="/dorm/view/id/8">Sunny Court Appartments</a></h4>
+							<p class="addy">1227 Sunny Court , San Jose, CA 95116</p>
+												<p class="desc"></p>
+						<p>Apartment</p>
+						<p>							
+							<span class="rating"><span style="width: 0%">Overall: 0</span></span>						
+							<span class="price"><span style="width: 0%">Price: 0</span></span>
+
+						</p>
+						<a onclick="showDorm(7)" class="showonmap" class="showonmap" id="showOnMap8" href="#mapsearch">show on map</a>					</li>					
+														<li>
+						<img src="/assets/images/4bc3ad52e6bb3t" alt="" onerror="this.src='img/nophoto.png';" />													<h4><a href="/dorm/view/id/9">Elm Street Apartments</a></h4>
+							<p class="addy">990 Elm Street, San Jose, CA 95126</p>
+												<p class="desc"></p>
+						<p>Apartment</p>
+
+						<p>							
+							<span class="rating"><span style="width: 0%">Overall: 0</span></span>						
+							<span class="price"><span style="width: 0%">Price: 0</span></span>
+						</p>
+						<a onclick="showDorm(8)" class="showonmap" class="showonmap" id="showOnMap9" href="#mapsearch">show on map</a>					</li>					
+														<li>
+						<img src="/assets/images/4bc3a549ceb68t" alt="" onerror="this.src='img/nophoto.png';" />													<h4><a href="/dorm/view/id/10">Summerwind Apartments </a></h4>
+
+							<p class="addy">2055 Summerside Drive, San Jose, CA 95122</p>
+												<p class="desc"></p>
+						<p>Apartment</p>
+						<p>							
+							<span class="rating"><span style="width: 0%">Overall: 0</span></span>						
+							<span class="price"><span style="width: 0%">Price: 0</span></span>
+						</p>
+						<a onclick="showDorm(9)" class="showonmap" class="showonmap" id="showOnMap10" href="#mapsearch">show on map</a>					</li>					
+							</ul>
+<ul id="yw1" class="yiiPager"><li class="first hidden"><a href="/school/1"></a></li>
+<li class="previous hidden"><a href="/school/1"></a></li>
+<li class="page selected"><a href="/school/1">1</a></li>
+<li class="page"><a href="/school/1?page=2">2</a></li>
+<li class="page"><a href="/school/1?page=3">3</a></li>
+<li class="page"><a href="/school/1?page=4">4</a></li>
+
+<li class="page"><a href="/school/1?page=5">5</a></li>
+<li class="next"><a href="/school/1?page=2"></a></li>
+<li class="last hidden"><a href="/school/1?page=5"></a></li></ul>
+			<form action="/school/1" method="get" class="sortForm">
+			<div class="sorter">
+				Sort by: 
+				<ul>
+					<li class="selected">
+						<a class="up" href="/school/1?sort=price">Price</a>					</li>
+					<li>
+						<a class="down" href="/school/1?sort=rating">Rating</a>					</li>
+				</ul>
+
+			</div>
+<select id="submit_dropdown" onchange="this.form.submit()" name="type">
+<option value="">-- all --</option>
+<option value="Apartment">Apartment</option>
+<option value="Condo">Condo</option>
+<option value="Townhouse">Townhouse</option>
+<option value="Duplex">Duplex</option>
+<option value="Studio">Studio</option>
+
+</select>			</form>	
+
+					</div>
+	</div>
+	<div class="rightColumn">
+		<div id="mapsearch">Loading...</div>	
+		<h3 class="middle-header">Nearby points of interest</h3>
+                <ul class="hotspots">
+        <li id="hs01" class="hotspot"><a href="">Grocery Stores</a></li>
+        <li id="hs02" class="hotspot"><a href="">Gas</a></li>
+        <li id="hs03" class="hotspot"><a href="">Laundry Mat</a></li>
+        <li id="hs04" class="hotspot"><a href="">Bar</a></li>
+        <li id="hs05" class="hotspot"><a href="">Club</a></li>
+</ul>
+	</div>
+</div>
+<!-- 
+MARKER HTML 
+
+<div class="gsmsc-result-wrapper">
+	<div class="gs-localResult gs-result">
+		<div class="gs-title">
+			<a href="http://www.google.com/maps/place?source=uds&amp;q=post+office&amp;cid=18038634065400544415" class="gs-title" target="_blank">US <b>Post Office</b></a>
+		</div>
+		<div class="gs-address">
+			<div class="gs-street gs-addressLine">1311 Cambridge Street</div>
+			<div class="gs-city gs-addressLine">Cambridge, MA</div>
+			<div class="gs-country">United States</div>
+		</div>
+		<div class="gs-phone">(617) 864-4344</div>
+		<div class="gs-directions">
+			<a href="http://www.google.com/maps?source=uds&amp;daddr=1311+Cambridge+Street%2C+Cambridge%2C+MA+%28US+Post+Office%29+%4042.373577%2C-71.099615&amp;saddr=42.3728%2C-71.114981" class="gs-directions" target="_blank">directions</a>
+		</div>
+		<div class="gs-directions-to-from">
+			<div class="gs-label">Get directions:</div>
+			<div class="gs-secondary-link">
+				<a href="http://www.google.com/maps?source=uds&amp;daddr=1311+Cambridge+Street%2C+Cambridge%2C+MA+%28US+Post+Office%29+%4042.373577%2C-71.099615&amp;iwstate1=dir%3Ato" class="gs-secondary-link" target="_blank">To here</a>
+			</div>
+			<div class="gs-spacer">-</div>
+			<div class="gs-secondary-link">
+				<a href="http://www.google.com/maps?source=uds&amp;saddr=1311+Cambridge+Street%2C+Cambridge%2C+MA+%28US+Post+Office%29+%4042.373577%2C-71.099615&amp;iwstate1=dir%3Afrom" class="gs-secondary-link" target="_blank">From here</a>
+			</div>
+		</div>
+		<div class="gs-watermark">
+			<a href="http://code.google.com/apis/ajaxsearch/faq.html" class="gs-watermark" target="_blank">clipped from Google - 3/2010</a>
+		</div>
+	</div>
+</div>
+ -->
+	</div>
+
+	<div id="footer">
+		<address>Copyright &copy; 2010 NoDormz.com. All Rights Reserved.</address>
+		<ul>
+			<li><a href="/aboutUs">About Us</a></li>
+			<li><a href="/contactUs">Contact Us</a></li>
+			<li><a href="/privacyPolicy">Privacy Policy</a></li>
+			<li><a href="/termsOfUse">Terms Of Use</a></li>
+		</ul>
+	</div>
+
+</div>
+</body>
+</html>

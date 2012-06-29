@@ -1,0 +1,345 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="language" content="en" />
+	
+	<!-- blueprint CSS framework -->
+	<link rel="stylesheet" type="text/css" href="/css/screen.css" media="screen, projection" />
+	<link rel="stylesheet" type="text/css" href="/css/print.css" media="print" />
+	<!--[if lt IE 9]>
+	<link rel="stylesheet" type="text/css" href="css/ie.css" media="screen, projection" />
+	<![endif]-->
+
+	<link rel="stylesheet" type="text/css" href="css/nodormz.css" />
+
+	<link rel="stylesheet" type="text/css" href="http://www.google.com/uds/css/gsearch.css" />
+<link rel="stylesheet" type="text/css" href="http://www.google.com/uds/solutions/mapsearch/gsmapsearch.css" />
+<link rel="stylesheet" type="text/css" href="/css/lightbox.css" />
+<script type="text/javascript" src="/assets/ef6a4ac0/jquery.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAzGGKkE4p9REORxEyPbPhABQPVQm3MmjjrQ3Jh2BuxlJ_YhkqEhTV4VwvTVof3tyDWZGft3W7xjvW1g"></script>
+<script type="text/javascript" src="http://www.google.com/uds/api?file=uds.js&amp;v=1.0&amp;key=ABQIAAAAzGGKkE4p9REORxEyPbPhABQPVQm3MmjjrQ3Jh2BuxlJ_YhkqEhTV4VwvTVof3tyDWZGft3W7xjvW1g"></script>
+<script type="text/javascript" src="http://www.google.com/uds/solutions/mapsearch/gsmapsearch.js"></script>
+<script type="text/javascript" src="/js/prototype.js"></script>
+<script type="text/javascript" src="/js/effects.js"></script>
+
+<script type="text/javascript" src="/js/builder.js"></script>
+<script type="text/javascript" src="/js/lightbox.js"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+
+	LightboxOptions = Object.extend(LightboxOptions, {
+    	fileLoadingImage:        '/css/images/loading.gif',     
+    	fileBottomNavCloseImage: '/css/images/closelabel.gif'
+    });
+
+/*]]>*/
+</script>
+<title>NoDormz.com - View Dorm</title>
+</head>
+<body>
+<div id="page" class="container">
+	<div id="head">
+		<h1><a href="/">NoDormz.com</a></h1>
+                <div class="nav">
+		<a class="adddorm" href="/school/1/addDorm">Add new Dorm</a>
+		<ul class="breadcrumbs"><!-- ADDED -->
+                   <li><a href="/">Home</a></li>
+                   <li><a href="/school/1">San Jose State University</a></li>	
+		   <li>The Colonnade Apartments</li>
+	</ul>
+		</div>		
+						
+						
+				<div id="content">
+		<script type="text/javascript">
+var map;
+var geocoder;
+function LoadMapSearch() {
+	var hotspots = [
+	        { element : document.getElementById("hs01"), query : "grocery" },
+	        { element : document.getElementById("hs02"), query : "gas station" },
+	        { element : document.getElementById("hs03"), query : "laundry" },
+	        { element : document.getElementById("hs04"), query : "bar" },
+	        { element : document.getElementById("hs05"), query : "club" }
+	];
+	var mapSearchControl = new GSmapSearchControl(
+        document.getElementById("mapsearch"),
+        "201 South Fourth Street, San Jose, CA 95112",
+        {
+        	title : "The Colonnade Apartments",
+            url : "/dorm/view/id/1",
+            idleMapZoom : GSmapSearchControl.ACTIVE_MAP_ZOOM-1,
+            hotspots : hotspots,
+            showResultList : GSmapSearchControl.DEFAULT_RESULT_LIST,
+            linkTarget: '_self'       	
+        }
+	);	
+	map = mapSearchControl.gmap;
+	geocoder = new GClientGeocoder();	
+}
+GSearch.setOnLoadCallback(LoadMapSearch);
+jQuery(function () {
+	jQuery('#addReview').next().find('select').each(function (index, select) {	    
+	    jQuery(select).hide().next().show()
+	})
+})
+</script>
+<div class="twoColumns">
+	<div class="leftColumn">
+
+		<h2 class="name">
+			The Colonnade Apartments			<span>
+				near
+				<a href="/school/1">San Jose State University &raquo;</a>			</span>
+		</h2>
+		<p class="addy">
+		   <a class="contactthisproperty">Contact this property</a>
+					201 South Fourth Street,<br /> San Jose, CA 95112				</p>
+
+		<dl class="dormparams">
+		    <dt>Lease</dt>
+		    <dd>1 year or month to month</dd>		    <dt>Pets</dt>
+		    <dd>No pets allowed</dd>		    <dt>Laundry</dt>		    <dd>On site</dd>		    <dt>Beds</dt>		    <dd>Studio 2</dd>		    <dt>Parking</dt>
+		    <dd>Space is provided</dd>		    <dt>Bath</dt>
+		    <dd>1-2</dd>
+		</dl>
+		<div class="dorminfo">
+	  	    <div class="mainphoto">
+	                <a rel="lightbox[dormPhoto]" href="/assets/images/4bc383ff4287e"><img src="/assets/images/4bc383ff4287et" alt="" onerror="this.src='img/nophoto.png';" /></a>
+			<dl class="ratings">
+			    <dt>Overall rating</dt>
+			    <dd><span class="rating"><span style="width: 47%">2.8333</span></span></dd>
+			</dl>
+		    </div>
+                    <h5 class="ratings">Averages</h5>		    <dl class="ratings">
+							<dt>Quietness</dt>
+				<dd><span class="rating"><span style="width: 60%">3.0000</span></span></dd>
+							<dt>Safety</dt>
+				<dd><span class="rating"><span style="width: 80%">4.0000</span></span></dd>
+							<dt>Amenities</dt>
+
+				<dd><span class="rating"><span style="width: 40%">2.0000</span></span></dd>
+							<dt>Parking</dt>
+				<dd><span class="rating"><span style="width: 60%">3.0000</span></span></dd>
+							<dt>Maintenance</dt>
+				<dd><span class="rating"><span style="width: 40%">2.0000</span></span></dd>
+							<dt>Price</dt>
+				<dd><span class="price"><span style="width: 60%">3.0000</span></span></dd>
+		     </dl>
+		 </div>
+		 <div class="dormphotos">
+					<h3 class="middle-header">Photos</h3>
+
+			<ul class="photos">
+									<li>
+						<a rel="lightbox[dormPhoto]" href="/assets/images/4bc383ff4287e"><img src="http://nodormz.com/assets/images/4bc383ff4287et" alt="" /></a>						
+					</li>
+							</ul>
+		 </div>
+				<!-- 
+			<a href="/school/1#content">See other dorms near San Jose State University</a>		 -->
+		<div class="dorms"> 
+			<a class="addreview" href="#addReview">add new review</a>
+			<h3 class="middle-header">Reviews</h3>
+						<ul class="items reviews">
+
+									<li>						
+						<blockquote>Tralalal</blockquote>						
+						<cite>added by Bartek 6 days ago</cite>
+						<dl class="ratings">
+															<dt>Quietness</dt>
+								<dd><span class="rating"><span style="width: 60%">3</span></span></dd>
+															<dt>Safety</dt>
+								<dd><span class="rating"><span style="width: 80%">4</span></span></dd>
+
+															<dt>Amenities</dt>
+								<dd><span class="rating"><span style="width: 40%">2</span></span></dd>
+															<dt>Parking</dt>
+								<dd><span class="rating"><span style="width: 60%">3</span></span></dd>
+															<dt>Maintenance</dt>
+								<dd><span class="rating"><span style="width: 40%">2</span></span></dd>
+
+														<dt>Price</dt>
+							<dd><span class="price"><span style="width: 75%">3</span></span></dd>
+						</dl>
+					</li>					
+							</ul>
+						<h3 class="middle-header" id="addReview">Add a review</h4>
+
+			<div class="form wide"> 
+			<form action="#addReview" method="post">				<div class="row">
+					<label for="Review_text" class="required">Text <span class="required">*</span></label>					<textarea name="Review[text]" id="Review_text"></textarea>									</div>
+									<div class="row">
+						<label for="Review_noise_rating" class="required">Quietness <span class="required">*</span></label>						<select name="Review[noise_rating]" id="Review_noise_rating">
+
+<option value="">-- select --</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select>						<div onmouseout="jQuery(this).children('div').css('width', ((parseInt(jQuery(this).prev()[0].value) || 0) * 20) + '%');" class="rating" style="display: none;">
+							<div style="width: 0%;"></div>
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '20%')" onclick="jQuery(this).parent().prev()[0].value = 1; return false;" style="left: 0px;" href="#">rate 1</a>
+
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '40%')" onclick="jQuery(this).parent().prev()[0].value = 2; return false;" style="left: 20px;" href="#">rate 2</a>
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '60%')" onclick="jQuery(this).parent().prev()[0].value = 3; return false;" style="left: 40px;" href="#">rate 3</a>
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '80%')" onclick="jQuery(this).parent().prev()[0].value = 4; return false;" style="left: 60px;" href="#">rate 4</a>
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '100%')" onclick="jQuery(this).parent().prev()[0].value = 5; return false;" style="left: 80px;" href="#">rate 5</a>
+						</div>
+											</div>
+									<div class="row">
+
+						<label for="Review_safety_rating" class="required">Safety <span class="required">*</span></label>						<select name="Review[safety_rating]" id="Review_safety_rating">
+<option value="">-- select --</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+
+</select>						<div onmouseout="jQuery(this).children('div').css('width', ((parseInt(jQuery(this).prev()[0].value) || 0) * 20) + '%');" class="rating" style="display: none;">
+							<div style="width: 0%;"></div>
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '20%')" onclick="jQuery(this).parent().prev()[0].value = 1; return false;" style="left: 0px;" href="#">rate 1</a>
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '40%')" onclick="jQuery(this).parent().prev()[0].value = 2; return false;" style="left: 20px;" href="#">rate 2</a>
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '60%')" onclick="jQuery(this).parent().prev()[0].value = 3; return false;" style="left: 40px;" href="#">rate 3</a>
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '80%')" onclick="jQuery(this).parent().prev()[0].value = 4; return false;" style="left: 60px;" href="#">rate 4</a>
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '100%')" onclick="jQuery(this).parent().prev()[0].value = 5; return false;" style="left: 80px;" href="#">rate 5</a>
+
+						</div>
+											</div>
+									<div class="row">
+						<label for="Review_amenities_rating" class="required">Amenities <span class="required">*</span></label>						<select name="Review[amenities_rating]" id="Review_amenities_rating">
+<option value="">-- select --</option>
+<option value="1">1</option>
+<option value="2">2</option>
+
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select>						<div onmouseout="jQuery(this).children('div').css('width', ((parseInt(jQuery(this).prev()[0].value) || 0) * 20) + '%');" class="rating" style="display: none;">
+							<div style="width: 0%;"></div>
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '20%')" onclick="jQuery(this).parent().prev()[0].value = 1; return false;" style="left: 0px;" href="#">rate 1</a>
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '40%')" onclick="jQuery(this).parent().prev()[0].value = 2; return false;" style="left: 20px;" href="#">rate 2</a>
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '60%')" onclick="jQuery(this).parent().prev()[0].value = 3; return false;" style="left: 40px;" href="#">rate 3</a>
+
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '80%')" onclick="jQuery(this).parent().prev()[0].value = 4; return false;" style="left: 60px;" href="#">rate 4</a>
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '100%')" onclick="jQuery(this).parent().prev()[0].value = 5; return false;" style="left: 80px;" href="#">rate 5</a>
+						</div>
+											</div>
+									<div class="row">
+						<label for="Review_parking_rating" class="required">Parking <span class="required">*</span></label>						<select name="Review[parking_rating]" id="Review_parking_rating">
+
+<option value="">-- select --</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select>						<div onmouseout="jQuery(this).children('div').css('width', ((parseInt(jQuery(this).prev()[0].value) || 0) * 20) + '%');" class="rating" style="display: none;">
+							<div style="width: 0%;"></div>
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '20%')" onclick="jQuery(this).parent().prev()[0].value = 1; return false;" style="left: 0px;" href="#">rate 1</a>
+
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '40%')" onclick="jQuery(this).parent().prev()[0].value = 2; return false;" style="left: 20px;" href="#">rate 2</a>
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '60%')" onclick="jQuery(this).parent().prev()[0].value = 3; return false;" style="left: 40px;" href="#">rate 3</a>
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '80%')" onclick="jQuery(this).parent().prev()[0].value = 4; return false;" style="left: 60px;" href="#">rate 4</a>
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '100%')" onclick="jQuery(this).parent().prev()[0].value = 5; return false;" style="left: 80px;" href="#">rate 5</a>
+						</div>
+											</div>
+									<div class="row">
+
+						<label for="Review_maintenance_rating" class="required">Maintenance <span class="required">*</span></label>						<select name="Review[maintenance_rating]" id="Review_maintenance_rating">
+<option value="">-- select --</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+
+</select>						<div onmouseout="jQuery(this).children('div').css('width', ((parseInt(jQuery(this).prev()[0].value) || 0) * 20) + '%');" class="rating" style="display: none;">
+							<div style="width: 0%;"></div>
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '20%')" onclick="jQuery(this).parent().prev()[0].value = 1; return false;" style="left: 0px;" href="#">rate 1</a>
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '40%')" onclick="jQuery(this).parent().prev()[0].value = 2; return false;" style="left: 20px;" href="#">rate 2</a>
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '60%')" onclick="jQuery(this).parent().prev()[0].value = 3; return false;" style="left: 40px;" href="#">rate 3</a>
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '80%')" onclick="jQuery(this).parent().prev()[0].value = 4; return false;" style="left: 60px;" href="#">rate 4</a>
+							<a onmouseover="jQuery(this).parent().children('div').css('width', '100%')" onclick="jQuery(this).parent().prev()[0].value = 5; return false;" style="left: 80px;" href="#">rate 5</a>
+
+						</div>
+											</div>
+								<div class="row">
+					<label for="Review_price" class="required">Price <span class="required">*</span></label>					<select name="Review[price]" id="Review_price">
+<option value="">-- select --</option>
+<option value="1">1</option>
+<option value="2">2</option>
+
+<option value="3">3</option>
+<option value="4">4</option>
+</select>					<div onmouseout="jQuery(this).children('div').css('width', ((parseInt(jQuery(this).prev()[0].value) || 0) * 25) + '%');" class="price" style="display: none;">
+						<div style="width: 0%;"></div>
+						<a onmouseover="jQuery(this).parent().children('div').css('width', '25%')" onclick="jQuery(this).parent().prev()[0].value = 1; return false;" style="left: 0px;" href="#">$</a>
+						<a onmouseover="jQuery(this).parent().children('div').css('width', '50%')" onclick="jQuery(this).parent().prev()[0].value = 2; return false;" style="left: 20px;" href="#">$$</a>
+						<a onmouseover="jQuery(this).parent().children('div').css('width', '75%')" onclick="jQuery(this).parent().prev()[0].value = 3; return false;" style="left: 40px;" href="#">$$$</a>
+
+						<a onmouseover="jQuery(this).parent().children('div').css('width', '100%')" onclick="jQuery(this).parent().prev()[0].value = 4; return false;" style="left: 60px;" href="#">$$$$</a>
+					</div>
+									</div>
+				<div class="row">
+					<label for="Review_u_name" class="required">Your Name <span class="required">*</span></label>					<input name="Review[u_name]" id="Review_u_name" type="text" value="" />									</div>
+				<div class="row">
+
+					<label for="Review_u_email" class="required">Your Email <span class="required">*</span></label>					<input name="Review[u_email]" id="Review_u_email" type="text" value="" />									</div>
+								<div class="row">
+					<label for="Review_verifyCode" class="required">Verify Code <span class="required">*</span></label>					<input name="Review[verifyCode]" id="Review_verifyCode" type="text" value="" />
+				</div><!-- div.row -->
+<div class="terms">
+										<p class="hint"><!-- text -->Please enter the text that appears on the image below.<!-- /text --><span class="formHintPointer">&nbsp;</span></p>
+					<div class="captcha"><img id="yw0" src="http://nodormz.com/dorm/captcha" alt="" /><a href="">Get a new code</a></div>					
+								<div>
+					<input id="ytReview_studentOrGraduate" type="hidden" value="0" name="Review[studentOrGraduate]" /><input name="Review[studentOrGraduate]" id="Review_studentOrGraduate" value="1" type="checkbox" />					<label for="Review_studentOrGraduate">I certify that I am a current student or a graduate from undergrad/graduate school</label>					
+										
+				</div>
+				<div>
+					<input id="ytReview_notAManagerOrEmployee" type="hidden" value="0" name="Review[notAManagerOrEmployee]" /><input name="Review[notAManagerOrEmployee]" id="Review_notAManagerOrEmployee" value="1" type="checkbox" />					<label for="Review_notAManagerOrEmployee">I certify that I am not a manager or employee of this property</label>					
+										
+				</div>			
+				<div class="buttons">
+					<input type="submit" class="add" name="yt1" value="Add" />				</div>
+				</div><!-- terms -->
+
+				
+			</form>			</div>
+		</div>
+	</div>
+	<div class="rightColumn" style="margin-top: 1.5em;">
+		<div id="mapsearch">Loading...</div>	
+		<h3 class="middle-header">Nearby points of interest</h3>
+                <ul class="hotspots">
+        <li id="hs01" class="hotspot"><a href="">Grocery Stores</a></li>
+        <li id="hs02" class="hotspot"><a href="">Gas</a></li>
+        <li id="hs03" class="hotspot"><a href="">Laundry Mat</a></li>
+        <li id="hs04" class="hotspot"><a href="">Bar</a></li>
+        <li id="hs05" class="hotspot"><a href="">Club</a></li>
+</ul>
+
+</div>
+	</div>
+	<div id="footer">
+		<div class="copy">Copyright &copy;  2010 NoDormz.com<br/>All Rights Reserved.</div>
+		<a href="/aboutUs">About Us</a> |
+		<a href="/contactUs">Contact Us</a> |
+		<a href="/privacyPolicy">Privacy Policy</a> |
+		<a href="/termsOfUse">Terms Of Use</a>			
+	</div>
+
+</div>
+<script type="text/javascript">
+/*<![CDATA[*/
+jQuery(document).ready(function() {
+jQuery('img#yw0').after("<a href=\"#\" id=\"yt0\">Get a new code<\/a>");
+jQuery('#yt0').live('click',function(){jQuery.ajax({'success':function(html){jQuery("#yw0").attr("src",html)},'url':'/dorm/captcha/refresh/1','cache':false});return false;});
+});
+/*]]>*/
+</script>
+</body>
+</html>
